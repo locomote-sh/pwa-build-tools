@@ -1,0 +1,6 @@
+* Rename repo to build-pwa: Incorporates functionality to do all the following:
+  - make service worker
+  - make web manifest
+  - make html header
+  - make app icons + splashscreen images
+

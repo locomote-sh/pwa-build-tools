@@ -1,0 +1,21 @@
+make-html-header:
+    - probably called by a heckle extension
+    - depends on manifest loading functions
+    - depends on list of app icon & splashscreen sizes
+
+make-web-manifest:
+    - called at build time as a workflow action
+    - depends on manifest loading functions
+    - queries for list of available app images, extracts list of icons
+
+make-sw:
+    - called at build time as a workflow action
+    - depends on manifest loading functions
+
+manifest loading functions:
+    - depends on json+links
+    - provides a default manifest definition
+
+Q: Do all of the above belong in the same repo?
+> Probably yes, although possible manifest loading needs to be shared with locomote-core.
+
