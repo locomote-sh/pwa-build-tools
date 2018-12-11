@@ -4,10 +4,12 @@
   "description": "Locomote.sh tools for building progressive web apps.",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "bin": "bin",
+    "test": "test"
   },
   "dependencies": {
-      "json-link": "^0.8.0"
+    "json-link": "git+https://github.com/locomote-sh/json-link.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

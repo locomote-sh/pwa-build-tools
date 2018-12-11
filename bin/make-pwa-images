@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const { make } = require('../lib/make-pwa-images');
+
+const { opts, source, target } = require('../lib/cli');
+
+make( opts, source, target );
