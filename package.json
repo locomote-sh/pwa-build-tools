@@ -1,0 +1,30 @@
+{
+  "name": "build-pwa",
+  "version": "0.8.0",
+  "description": "Locomote.sh tools for building progressive web apps.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+      "json-link": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locomote-sh/build-web-manifest.git"
+  },
+  "keywords": [
+    "locomote",
+    "build",
+    "pwa"
+  ],
+  "author": "Julian Goacher",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/locomote-sh/build-web-manifest/issues"
+  },
+  "homepage": "https://github.com/locomote-sh/build-web-manifest#readme"
+}
