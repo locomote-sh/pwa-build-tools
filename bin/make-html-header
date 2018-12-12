@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const { make } = require('../lib/make-html-header');
+
+const { opts, source, target } = require('../lib/cli');
+
+make( opts, source ).then( html => console.log( html ) );
