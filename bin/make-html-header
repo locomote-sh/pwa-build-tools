@@ -4,4 +4,4 @@ const { make } = require('../lib/make-html-header');
 
 const { opts, source, target } = require('../lib/cli');
 
-make( opts, source ).then( html => console.log( html ) );
+make( opts, source, target ).then( html => console.log( html ) );

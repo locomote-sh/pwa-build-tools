@@ -26,11 +26,11 @@ module.exports = {
             let opts = this._args;
             // Read site source.
             let site = await context.get('site');
-            let { source } = site;
+            let { source, target } = site;
             // Indicate file mode if heckle running in server mode.
             opts.fileMode = site.config.opts.serverMode || false;
             // Generate and return the header.
-            let html = await makeHTMLHeader( opts, source );
+            let html = await makeHTMLHeader( opts, source, target );
             return html;
         }
     },
