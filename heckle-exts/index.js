@@ -21,13 +21,17 @@ const makeHTMLHeader = require('../lib/make-html-header').make;
 module.exports = {
     init: function( context, engine ) {},
     tags: {
-        'pwa-header': function renderPWAHeader( context ) {
+        'pwa_header': async function renderPWAHeader( context ) {
             // Read options from tag arguments (see heckle SkeletonTagClass).
             let opts = this._args;
             // Read site source.
-            let { source } = context.site;
+            let site = await context.get('site');
+            let { source } = site;
+            // Indicate file mode if heckle running in server mode.
+            opts.fileMode = site.config.opts.serverMode || false;
             // Generate and return the header.
-            return makeHTMLHeader( opts, source );
+            let html = await makeHTMLHeader( opts, source );
+            return html;
         }
     },
     filters: {}
