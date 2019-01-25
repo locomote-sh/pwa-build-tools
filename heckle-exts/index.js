@@ -29,9 +29,6 @@ module.exports = {
             let { source, target } = site;
             // Indicate file mode if heckle running in server mode.
             opts.fileMode = site.config.opts.serverMode || false;
-            // Set the service worker URL - this assumes the service worker
-            // script is directly under the site's base URL.
-            opts.serviceWorkerURL = joinPath( site.baseurl, 'sw.js');
             // Generate and return the header.
             let html = await makeHTMLHeader( opts, source, target );
             return html;
