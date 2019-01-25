@@ -29,6 +29,9 @@ module.exports = {
             let { source, target } = site;
             // Indicate file mode if heckle running in server mode.
             opts.fileMode = site.config.opts.serverMode || false;
+            // Set the service worker URL - this assumes the service worker
+            // script is directly under the site's base URL.
+            opts.serviceWorkerURL = joinPath( site.baseurl, 'sw.js');
             // Generate and return the header.
             let html = await makeHTMLHeader( opts, source, target );
             return html;
@@ -36,3 +39,16 @@ module.exports = {
     },
     filters: {}
 };
+
+// Join a path to a base URL.
+function joinPath( base, path ) {
+    // Base URL can be undefined.
+    let url = base || '';
+    // Ensure a slash between base URL and path.
+    if( !url.endsWith('/') ) {
+        url += '/';
+    }
+    // Append path and return.
+    url += path;
+    return url;
+}
