@@ -29,6 +29,18 @@ module.exports = {
             let { source, target } = site;
             // Indicate file mode if heckle running in server mode.
             opts.fileMode = site.config.opts.serverMode || false;
+            // Derive a relative path to the service worker script from the page
+            // path. This assumes that the service worker script is always in the
+            // repo root folder; the page path will always be relative to the
+            // repo root.
+            let pagePath = await context.get('path');
+            let swPath = pagePath
+                .split('/')
+                .slice( 0, -1 )
+                .map( c => '..' )
+                .concat('sw.js')
+                .join('/');
+            opts.serviceWorkerURL = swPath;
             // Generate and return the header.
             let html = await makeHTMLHeader( opts, source, target );
             return html;
