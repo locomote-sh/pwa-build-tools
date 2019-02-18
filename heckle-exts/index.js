@@ -15,34 +15,59 @@
 */
 
 // Heckle site build extensions.
+// Standard tag usage is:
+//
+//  {% locomote %}
+//
+// Which will write all Locomote related HTML headers. Specifcally,
+// these are:
+// * App title
+// * PWA related headers
+// * SW related code
+// * Page metadata
 
 const makeHTMLHeader = require('../lib/make-html-header').make;
 
 module.exports = {
     init: function( context, engine ) {},
     tags: {
-        'pwa_header': async function renderPWAHeader( context ) {
-            // Read options from tag arguments (see heckle SkeletonTagClass).
-            let opts = this._args;
+        'locomote': async function renderPWAHeader( context ) {
+
+            // Read options from tag arguments (see Heckle SkeletonTagClass).
+            const opts = this._args;
+
             // Read site source.
-            let site = await context.get('site');
-            let { source, target } = site;
+            const site = await context.get('site');
+            const { source, target } = site;
+
             // Indicate file mode if heckle running in server mode.
             opts.fileMode = site.config.opts.serverMode || false;
+
             // Derive a relative path to the service worker script from the page
             // path. This assumes that the service worker script is always in the
             // repo root folder; the page path will always be relative to the
             // repo root.
-            let pagePath = await context.get('path');
-            let swPath = pagePath
+            const pagePath = await context.get('path');
+            const swPath = pagePath
                 .split('/')
                 .slice( 0, -1 )
                 .map( c => '..' )
                 .concat('sw.js')
                 .join('/');
             opts.serviceWorkerURL = swPath;
-            // Generate and return the header.
+
+            // Generate the HTML header.
             let html = await makeHTMLHeader( opts, source, target );
+
+
+            // Add page metadata.
+            const page = await context.get('page');
+            // Read page data, convert to JSON and apply escaping.
+            const { Liquid: { StandardFilters: { escape } } } = this;
+            const json = escape( JSON.stringify( page.data ) );
+            html += `\n<meta name="locomote:frontmatter" content="${json}" />`;
+
+            // Return the HTML.
             return html;
         }
     },
