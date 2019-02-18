@@ -26,7 +26,7 @@
 // * SW related code
 // * Page metadata
 
-const makeHTMLHeader = require('../lib/make-html-header').make;
+const { make: makeHTMLHeader } = require('../lib/make-html-header');
 
 module.exports = {
     init: function( context, engine ) {},
@@ -58,7 +58,6 @@ module.exports = {
 
             // Generate the HTML header.
             let html = await makeHTMLHeader( opts, source, target );
-
 
             // Add page metadata.
             const page = await context.get('page');
