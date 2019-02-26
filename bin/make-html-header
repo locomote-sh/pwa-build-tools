@@ -19,7 +19,13 @@ async function run() {
     try {
         const html = await make( opts, source, target );
 
+        if( !html ) {
+            // HTML won't be returned if there is no PWA configuration.
+            return;
+        }
+
         const { outputFile } = opts;
+
         if( outputFile ) {
             const path = Path.resolve( target, outputFile );
             await ensureDirForFile( path );
