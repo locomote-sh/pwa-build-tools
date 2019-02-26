@@ -1,7 +1,37 @@
 #!/usr/bin/env node
 
+const Path = require('path');
+
 const { make } = require('../lib/make-html-header');
 
-const { opts, source, target } = require('../lib/cli');
+const {
+    ensureDirForFile,
+    write
+} = require('../lib/support');
 
-make( opts, source, target ).then( html => console.log( html ) );
+const {
+    opts,
+    source,
+    target 
+} = require('../lib/cli');
+
+async function run() {
+    try {
+        const html = await make( opts, source, target );
+
+        const { outputFile } = opts;
+        if( outputFile ) {
+            const path = Path.resolve( target, outputFile );
+            await ensureDirForFile( path );
+            await write( path, html );
+        }
+        else {
+            console.log( html );
+        }
+    }
+    catch( e ) {
+        console.error( e );
+    }
+}
+
+run();
