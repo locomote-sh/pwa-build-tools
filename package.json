@@ -1,7 +1,7 @@
 {
-  "name": "@locomote.sh/core-build-tools",
-  "version": "0.8.2",
-  "description": "Locomote.sh tools for building progressive web apps.",
+  "name": "@locomote.sh/pwa-build-tools",
+  "version": "0.8.3",
+  "description": "Locomote.sh tools for building assets progressive web apps.",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/locomote-sh/core-build-tools.git"
+    "url": "git+https://github.com/locomote-sh/pwa-build-tools.git"
   },
   "keywords": [
     "locomote",
@@ -26,7 +26,7 @@
   "author": "Julian Goacher",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/locomote-sh/core-build-tools/issues"
+    "url": "https://github.com/locomote-sh/pwa-build-tools/issues"
   },
-  "homepage": "https://github.com/locomote-sh/core-build-tools#readme"
+  "homepage": "https://github.com/locomote-sh/pwa-build-tools#readme"
 }
