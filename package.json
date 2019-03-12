@@ -1,6 +1,6 @@
 {
   "name": "@locomote.sh/pwa-build-tools",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Locomote.sh tools for building assets progressive web apps.",
   "main": "index.js",
   "directories": {
