@@ -9,7 +9,7 @@
     "test": "test"
   },
   "dependencies": {
-    "sharp": "^0.21.3"
+    "sharp": "^0.30.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
